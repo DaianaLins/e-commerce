@@ -12,9 +12,9 @@ from routes.category import category
 
 app = FastAPI()
 
-app.include_router(user, prefix="/User", tags=["Users"])
-app.include_router(category, prefix="/Category", tags=["Categories"])
-app.include_router(product, prefix="/Product", tags=["Products"])
+app.include_router(user, prefix="/user", tags=["Users"])
+app.include_router(category, prefix="/category", tags=["Categories"])
+app.include_router(product, prefix="/product", tags=["Products"])
 
 app.mount('/', app=sio_app)
 

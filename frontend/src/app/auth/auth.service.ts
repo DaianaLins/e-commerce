@@ -10,7 +10,7 @@ import { IUserReturn, IUsuario } from '../component/Login';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8000/login'
+  private apiUrl = 'http://localhost:8000/user'
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   reqHeader = new HttpHeaders({
@@ -23,15 +23,34 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string | null = null;
 
-  login(usuario: IUsuario): Observable<IUserReturn> {
-    const res = this.httpClient.post<IUserReturn>(this.apiUrl + "/login", usuario).pipe(
+  login(usuario: IUsuario): Observable<IUsuario> {
+    console.log(usuario)
+    const res = this.httpClient.post<IUsuario>(this.apiUrl + "/user", usuario).pipe(
       tap((resposta) => {
-        if(!resposta['status']){
-          this.isLoggedIn = false;
-        } else {
-          localStorage.setItem('usuario', JSON.stringify(resposta));
-          this.isLoggedIn = true;
-        }
+        console.log(resposta)
+        // if(!resposta){
+        //   this.isLoggedIn = false;
+        // } else {
+        //   localStorage.setItem('usuario', JSON.stringify(resposta));
+        //   this.isLoggedIn = true;
+        // }
+
+      }))
+
+      return res
+  }
+
+
+  signup(usuario: IUsuario): Observable<IUserReturn> {
+    const res = this.httpClient.post<IUserReturn>(this.apiUrl + "/create", usuario).pipe(
+      tap((resposta) => {
+        console.log(resposta)
+        // if(!resposta){
+        //   this.isLoggedIn = false;
+        // } else {
+        //   localStorage.setItem('usuario', JSON.stringify(resposta));
+        //   this.isLoggedIn = true;
+        // }
 
       }))
 

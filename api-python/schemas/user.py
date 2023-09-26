@@ -1,3 +1,6 @@
+from sqlalchemy import select
+import models.user  
+
 def userEntity(item) -> dict:
     return {
         "id": str(item["_id"]),
@@ -8,3 +11,4 @@ def userEntity(item) -> dict:
 
 def usersEntity(entity) -> list:
     return [userEntity(item) for item in entity]
+
