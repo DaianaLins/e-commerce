@@ -20,10 +20,10 @@ async def create_product(product: Product):
     return productsEntity(conn.local.product.find())
 
 @product.put('/{id}')
-async def update_product(product: Product):
+async def update_product(id, product: Product):
     conn.local.product.find_one_and_update({"_id":ObjectId(id)}, {"$set":dict(product)})
     return productEntity(conn.local.product.find_one({"_id":ObjectId(id)}))
 
 @product.delete('/{id}')
-async def delete_product(product: Product):
+async def delete_product(id, product: Product):
     return productEntity(conn.local.product.find_one_and_delete({"_id":ObjectId(id)}))

@@ -20,10 +20,10 @@ async def create_category(category: Category):
     return categoriesEntity(conn.local.category.find())
 
 @category.put('/{id}')
-async def update_category(category: Category):
+async def update_category(id, category: Category):
     conn.local.category.find_one_and_update({"_id":ObjectId(id)}, {"$set":dict(category)})
     return categoryEntity(conn.local.category.find_one({"_id":ObjectId(id)}))
 
 @category.delete('/{id}')
-async def delete_category(category: Category):
+async def delete_category(id, category: Category):
     return categoryEntity(conn.local.category.find_one_and_delete({"_id":ObjectId(id)}))
