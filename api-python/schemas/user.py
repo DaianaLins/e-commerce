@@ -1,5 +1,6 @@
+from fastapi import HTTPException, status
 from sqlalchemy import select
-import models.user  
+from models.user import User, Login 
 
 def userEntity(item) -> dict:
     return {
@@ -11,4 +12,10 @@ def userEntity(item) -> dict:
 
 def usersEntity(entity) -> list:
     return [userEntity(item) for item in entity]
+
+# def obter_por_email(self, email) -> Login:
+#     query = self.find_one({"email": email})
+#     return self.session.execute(query).scalars.first()
+    
+
 
