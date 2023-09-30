@@ -17,7 +17,8 @@ export class  UserToken  {
 export class PermissionsService {
   constructor(private router: Router, private authService: AuthService) {}
   canActivate(currentUser: string): boolean {
-    if (!currentUser && !this.authService.isLoggedIn) {
+    localStorage.getItem('access_token')
+    if (!currentUser && !localStorage.getItem('access_token')) {
       return false
     } else {
       return true;

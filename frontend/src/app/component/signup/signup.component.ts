@@ -35,6 +35,7 @@ export class SignupComponent {
     var usuario = {'name': this.nome, 'email': this.email_l, 'password': this.password} as IUsuario;
     this.authService.signup(usuario).subscribe((res) => {
       this.message = this.getMessage();
+      alert(res.msg)
 
       // if (this.authService.isLoggedIn === true) {
       //   const redirectUrl = 'home';
@@ -42,6 +43,9 @@ export class SignupComponent {
       // } else{
       //   alert(res['msg']?.valueOf())
       // }
+    },
+    err =>{
+      alert(err.error.detail)
     });
   }
 

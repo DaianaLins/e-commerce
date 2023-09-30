@@ -6,13 +6,12 @@ export interface IUsuario {
 
 export interface IUserReturn {
   msg: string;
-  status: boolean;
-  user: {
-    username: string;
-    email: string;
-    password: string;
-    isAvatarImageSet: boolean;
-    avatarImage: string;
+  access_token: string
+  user:{
+    id: string
+    email:string
+    name: string
+    password:string
   }
 }
 

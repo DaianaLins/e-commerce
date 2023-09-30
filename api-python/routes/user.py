@@ -33,7 +33,7 @@ async def create_user(user: User):
 
     user.password = gerar_hash(user.password)
     conn.local.user.insert_one(dict(user))
-    return user 
+    return {'msg': 'Usuário criado com sucesso. Bem vindo(a)'} 
 
 @user.put('/{id}')
 async def update_user(id, user: User):

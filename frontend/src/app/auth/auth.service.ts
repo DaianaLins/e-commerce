@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Data, Router } from '@angular/router';
 
-import { Observable, of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { tap, delay, catchError } from 'rxjs/operators';
 import { IUserReturn, IUsuario } from '../component/Login';
 
 @Injectable({
@@ -23,9 +23,9 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string | null = null;
 
-  login(usuario: IUsuario): Observable<IUsuario> {
+  login(usuario: IUsuario): Observable<IUserReturn> {
     console.log(usuario)
-    const res = this.httpClient.post<IUsuario>(this.apiUrl + "/user", usuario).pipe(
+    const res = this.httpClient.post<IUserReturn>(this.apiUrl + "/token", usuario).pipe(
       tap((resposta) => {
         console.log(resposta)
         // if(!resposta){
@@ -35,7 +35,8 @@ export class AuthService {
         //   this.isLoggedIn = true;
         // }
 
-      }))
+      }
+  ))
 
       return res
   }
@@ -44,13 +45,9 @@ export class AuthService {
   signup(usuario: IUsuario): Observable<IUserReturn> {
     const res = this.httpClient.post<IUserReturn>(this.apiUrl + "/create", usuario).pipe(
       tap((resposta) => {
-        console.log(resposta)
-        // if(!resposta){
-        //   this.isLoggedIn = false;
-        // } else {
-        //   localStorage.setItem('usuario', JSON.stringify(resposta));
-        //   this.isLoggedIn = true;
-        // }
+        if(!resposta){
+          console.log(resposta)
+        }
 
       }))
 
