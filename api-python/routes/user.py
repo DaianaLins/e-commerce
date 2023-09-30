@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic_core import to_json
 
-from models.user import User, Login
+from models.user import User, Login, SimpleUser
 from config.db import conn
 from schemas.user import userEntity, usersEntity
 from bson import ObjectId
@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 from config.db import conn
 from providers.hash_provider import gerar_hash, verificar_hash
 from providers.token_provider import create_access_token
+from utils.auth_utils import get_user
 
 user = APIRouter()
 
@@ -20,9 +21,9 @@ async def find_all_users():
     print(usersEntity(conn.local.user.find()))
     return usersEntity(conn.local.user.find())
 
-@user.get('/{id}')
-async def find_one_user(id):
-    return userEntity(conn.local.user.find_one({"_id":ObjectId(id)}))
+# @user.get('/{id}')
+# async def find_one_user(id):
+#     return userEntity(conn.local.user.find_one({"_id":ObjectId(id)}))
 
 @user.post('/create')
 async def create_user(user: User):
@@ -59,12 +60,12 @@ def login(login_data: Login):
     if not password_valid:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Email ou senha incorretos')
     # # Gerar jwt
-    token = create_access_token({'sub': user['password']})
+    token = create_access_token({'sub': user})
     return {'user': user, 'access_token': token}
 
 
-@user.get('/me')
-def me(user:User):
+@user.get('/me', response_model=SimpleUser)
+def me(user:SimpleUser = Depends(get_user)):
     #decodificador
     return user
        

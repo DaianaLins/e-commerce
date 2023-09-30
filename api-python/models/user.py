@@ -5,6 +5,10 @@ class User(BaseModel):
     email: str
     password: str
 
+class SimpleUser(BaseModel):
+    name: str
+    email: str
+
 class Login(BaseModel):
     email: str
     password: str    
