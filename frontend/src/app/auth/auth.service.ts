@@ -4,7 +4,7 @@ import { Data, Router } from '@angular/router';
 
 import { Observable, of, throwError } from 'rxjs';
 import { tap, delay, catchError } from 'rxjs/operators';
-import { IUserReturn, IUsuario } from '../component/Login';
+import { IUser, IUserReturn, IUsuario } from '../interfaces/Login';
 
 @Injectable({
   providedIn: 'root',
@@ -15,21 +15,30 @@ export class AuthService {
 
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
-    // 'Authorization': 'Bearer ' + localStorage.getItem('token')
+    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
  });
 
   isLoggedIn = false;
+
 
   // store the URL so we can redirect after logging in
   redirectUrl: string | null = null;
 
   login(usuario: IUsuario): Observable<IUserReturn> {
-    console.log(usuario)
     const res = this.httpClient.post<IUserReturn>(this.apiUrl + "/token", usuario).pipe(
       tap((resposta) => {
-        console.log(resposta)
+
+      }
+  ))
+
+      return res
+    }
+
+  async auth_token() : Promise<Observable<IUser>>{
+    const res = await this.httpClient.get<IUser>(this.apiUrl + "/me", {headers: this.reqHeader}).pipe(
+      tap((resposta) => {
         // if(!resposta){
-        //   this.isLoggedIn = false;
+          //   this.isLoggedIn = false;
         // } else {
         //   localStorage.setItem('usuario', JSON.stringify(resposta));
         //   this.isLoggedIn = true;

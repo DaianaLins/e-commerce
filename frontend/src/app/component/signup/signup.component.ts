@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { IUsuario } from '../Login';
+import { IUsuario } from '../../interfaces/Login';
 
 @Component({
   selector: 'app-signup',
@@ -36,13 +36,8 @@ export class SignupComponent {
     this.authService.signup(usuario).subscribe((res) => {
       this.message = this.getMessage();
       alert(res.msg)
-
-      // if (this.authService.isLoggedIn === true) {
-      //   const redirectUrl = 'home';
-      //   this.router.navigate([redirectUrl]);
-      // } else{
-      //   alert(res['msg']?.valueOf())
-      // }
+      const redirectUrl = 'home';
+      this.router.navigate([redirectUrl]);
     },
     err =>{
       alert(err.error.detail)

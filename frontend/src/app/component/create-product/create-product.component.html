@@ -5,6 +5,10 @@
   <div [ngClass]="home">
     <app-header></app-header>
     <div [ngClass]="content_search">
+      <button (click)="createProduct()">Cadatrar Produto</button>
 
+      <p  *ngFor="let product of products" >
+        {{product.name}}
+      </p>
   </div>
 </div>

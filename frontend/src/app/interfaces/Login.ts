@@ -15,6 +15,11 @@ export interface IUserReturn {
   }
 }
 
+export interface IUser{
+  name: string
+  email: string
+}
+
 
 export interface IDesign {
   key: string;

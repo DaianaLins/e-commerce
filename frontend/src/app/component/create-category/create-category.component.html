@@ -5,6 +5,9 @@
   <div [ngClass]="home">
     <app-header></app-header>
     <div [ngClass]="content_search">
-
+      <button (click)="createCategory()">Cadatrar Categoria</button>
+      <p  *ngFor="let category of categories" >
+        {{category.name}}
+      </p>
   </div>
 </div>

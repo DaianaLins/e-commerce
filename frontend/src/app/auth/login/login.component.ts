@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { IUsuario } from 'src/app/component/Login';
+import { IUsuario } from 'src/app/interfaces/Login';
 
 @Component({
   selector: 'app-login',
@@ -38,18 +38,18 @@ export class LoginComponent {
       this.message = this.getMessage();
       if (res.access_token) {
         localStorage.setItem('access_token', res.access_token)
-        const redirectUrl = 'home';
-        this.router.navigate([redirectUrl]);
+        this.authService.auth_token().then((res)=>{
+          res.pipe().subscribe((res)=>{
+            console.log({res})
+            localStorage.setItem('user', JSON.stringify(res))
+            const redirectUrl = 'home';
+            this.router.navigate([redirectUrl]);
+          })
+        })
       } else{
         alert(res['msg']?.valueOf())
       }
     });
-  }
-
-  logout() {
-    this.authService.logout();
-    localStorage.clear();
-    this.router.navigate(['']);
   }
 
 }

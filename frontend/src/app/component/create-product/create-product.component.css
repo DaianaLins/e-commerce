@@ -131,3 +131,19 @@
   .artist_tarcks:hover{
     text-decoration: underline;
   }
+
+  button{
+    background: #8B0000;
+    height: 45px;
+    width: 350px;
+    border: none;
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }

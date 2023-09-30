@@ -10,6 +10,10 @@ import { AuthService } from './auth/auth.service';
 import { PermissionsService } from './auth/user-autenticado.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './component/header/header.component';
+import { MenuComponent } from './component/menu/menu.component';
+import { CreateCategoryComponent } from './component/create-category/create-category.component';
+import { CreateProductComponent } from './component/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     HomeComponent,
     SignupComponent,
+    HeaderComponent,
+    MenuComponent,
+    CreateCategoryComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,

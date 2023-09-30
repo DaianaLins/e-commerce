@@ -1,0 +1,25 @@
+.container{
+  height: 95.5vh;
+  background: #121212;
+  width: 317px;
+  flex-direction: column;
+  padding:  0 0.5rem 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.content{
+  width: 317px;
+  height: 152px;
+  background: #1a1a1a;
+  border-radius: 14px;
+}
+
+p{
+  color: #fff;
+  background: none;
+}
+
+a{
+  text-decoration: none;
+}

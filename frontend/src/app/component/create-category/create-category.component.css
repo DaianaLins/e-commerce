@@ -1,0 +1,45 @@
+.body{
+  /* display:flex; */
+  float: left;
+  background: white;
+
+  }
+  .home{
+    background: #1a1a1a;
+    margin: 1rem;
+    border-radius: 14px;
+    height: 95.5vh;
+    display: grid;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    grid-template-columns: repeat(1, 2fr);
+  }
+  .home::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+  }
+
+  .home::-webkit-scrollbar-track {
+    background: transparent;/* color of the tracking area */
+  }
+
+  .home::-webkit-scrollbar-thumb {
+    background-color: hsla(0,0%,100%,.07);
+  /* border-radius: 20px; */
+  /* border: 3px solid orange;   */
+  }
+
+  button{
+    background: #8B0000;
+    height: 45px;
+    width: 350px;
+    border: none;
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }

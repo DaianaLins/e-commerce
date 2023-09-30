@@ -1,0 +1,10 @@
+<section [ngClass]="content">
+  <div [ngClass]="container">
+    <p>{{user['name']}}</p>
+    <div [ngClass]="container2">
+      <p>{{user['email']}}</p>
+      <button (click)="logout()"><p>Sair</p></button>
+
+    </div>
+  </div>
+</section>

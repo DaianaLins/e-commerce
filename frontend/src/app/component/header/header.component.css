@@ -1,0 +1,30 @@
+.content{
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.container{
+      display: flex;
+      justify-content: flex-end;
+      height: 1rem;
+      align-items: flex-end;
+      flex-direction: column;
+      padding: 2rem 2rem 0 2rem;
+}
+
+.container2{
+  display: flex;
+  justify-content: flex-end;
+  /* height: 1rem; */
+  align-items: flex-end;
+  flex-direction: row;
+  padding: 5px 5px 0 5px;
+}
+
+
+p{
+  color: #fff;
+
+}
+
