@@ -28,12 +28,32 @@ body {
   margin-bottom: 1em;
 }
 .login{
-  background: #FFF;
+  background:#242424;
 }
 .home{
-  background: #696969;
+  background: #FFF;
   background-size: cover;
 }
 p{
   color: #fff;
 }
+
+
+.input{
+  margin-right: 2rem;
+  height: 48px;
+  width: 15rem;
+  background-color: #242424;
+  border-radius: 30px;
+  border: 0;
+  padding: 6px 10px;
+  margin: 10px 0 20px 0;
+  color: #fff!important;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  font-weight: 600;
+
+}
+
+
+

@@ -5,10 +5,25 @@
   <div [ngClass]="home">
     <app-header></app-header>
     <div [ngClass]="content_search">
-      <button (click)="createProduct()">Cadatrar Produto</button>
+      <div [ngClass]="input_header">
+        <p *ngIf="!!message">{{message}}</p>
+        <input [ngClass]="input" placeholder="Nome" [(ngModel)]="name" required name="name" type="text" />
+        <textarea rows="4" cols="20" [ngClass]="input" placeholder="Descrição" [(ngModel)]="description" name="description"
+          type="text"></textarea>
+        <input [ngClass]="input" placeholder="R$ Valor" step="0.01"  [(ngModel)]="value"
+        name="value" type="text"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')"  />
 
-      <p  *ngFor="let product of products" >
-        {{product.name}}
-      </p>
+        <div [ngClass]="content_select">
+          <select [(ngModel)]="categoryData" name="categorias" id="categorias">
+            <option value="">Selecione uma categoria</option>
+            <option *ngFor="let category of categories"   [ngClass]="input" value={{category.name}}>{{category.name}}</option>
+          </select>
+        </div>
+        <input [(ngModel)]="quantity" name="quantity" [ngClass]="input" placeholder="Quantidade"
+          type="text"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1'); "  />
+        <input name="image" (change)="this.onFilechange($event)" [ngClass]="input" width="48" height="48" placeholder="Selecione uma imagem"
+          type="file" />
+        <button (click)="createProduct()">Cadastrar Produto</button>
+      </div>
+    </div>
   </div>
-</div>

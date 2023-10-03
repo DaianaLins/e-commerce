@@ -27,4 +27,38 @@ export class CategoryService {
       return res
   }
 
+  async createCategory(category: ICategories): Promise<Observable<ICategories[]>> {
+    const res = await this.httpClient.post<ICategories[]>(this.apiUrl + "/create", category,  {headers: this.reqHeader}).pipe(
+      tap((resposta) => {
+        if(!resposta){
+        }
+
+      }))
+
+      return res
+  }
+
+  async editCategory(category: ICategories): Promise<Observable<ICategories[]>> {
+    const res = await this.httpClient.put<ICategories[]>(this.apiUrl + `/${category.id}`, category,  {headers: this.reqHeader}).pipe(
+      tap((resposta) => {
+        if(!resposta){
+        }
+
+      }))
+
+      return res
+  }
+
+  deleteCategory(id: string): Observable<ICategories[]> {
+
+    const res = this.httpClient.delete<ICategories[]>(this.apiUrl + `/${id}`, {headers: this.reqHeader}).pipe(
+      tap((resposta) => {
+        if(!resposta){
+
+        }
+
+      }))
+
+      return res
+  }
 }

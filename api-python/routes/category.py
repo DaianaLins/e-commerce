@@ -14,7 +14,7 @@ from utils.auth_utils import get_user
 async def find_all_categories(user:SimpleUser = Depends(get_user)):
     return categoriesEntity(conn.local.category.find())
 
-@category.post('/')
+@category.post('/create')
 async def create_category(category: Category, user:SimpleUser = Depends(get_user)):
     conn.local.category.insert_one(dict(category))
     return categoriesEntity(conn.local.category.find())
@@ -25,5 +25,5 @@ async def update_category(id, category: Category, user:SimpleUser = Depends(get_
     return categoryEntity(conn.local.category.find_one({"_id":ObjectId(id)}))
 
 @category.delete('/{id}')
-async def delete_category(id, category: Category, user:SimpleUser = Depends(get_user)):
+async def delete_category(id,  user:SimpleUser = Depends(get_user)):
     return categoryEntity(conn.local.category.find_one_and_delete({"_id":ObjectId(id)}))

@@ -2,12 +2,7 @@
   <div [ngClass]="body">
     <div [ngClass]="form">
       <h1>Olá, faça o seu cadastro</h1>
-      <div *ngIf="showErr"  [ngStyle]="{'paddingTop': '20px' }" >
-        <p [ngStyle]="{'color': 'red' }" >É necessário preencher todos os campos*</p>
-      </div>
-      <div *ngIf="showErrAut"  [ngStyle]="{'paddingTop': '20px' }" >
-        <p [ngStyle]="{'color': 'red' }" >Usuário ou senha incorretos</p>
-      </div>
+      <p style="color: red;" *ngIf="!!message">{{message}}</p>
       <div [ngClass]="container" >
         <label for="nome" [ngClass]="nome"  >Usuário</label>
         <input type="email" required   [ngClass]="emailInput"  [(ngModel)]="nome" name="nome"  placeholder="Usuário">

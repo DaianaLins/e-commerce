@@ -17,8 +17,6 @@ user = APIRouter()
 
 @user.get('/')
 async def find_all_users():
-    print(conn.local.user.find())
-    print(usersEntity(conn.local.user.find()))
     return usersEntity(conn.local.user.find())
 
 # @user.get('/{id}')
@@ -49,8 +47,6 @@ def login(login_data: Login):
     password = login_data.password
     email = login_data.email
     user = userEntity(conn.local.user.find_one({"email":email}))
-
-    print(user)
 
     
     if not user:

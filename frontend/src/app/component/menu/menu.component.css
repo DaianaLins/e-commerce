@@ -18,8 +18,11 @@
 p{
   color: #fff;
   background: none;
+  padding-left: 20px;
 }
 
 a{
+  margin:20px;
   text-decoration: none;
+
 }

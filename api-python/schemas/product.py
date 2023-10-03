@@ -5,7 +5,8 @@ def productEntity(item) -> dict:
         "description": item["description"],
         "value": item["value"],
         "category": item["category"],
-        "quantity": item["quantity"]
+        "quantity": item["quantity"],
+        "image": item["image"],
     }
 
 def productsEntity(entity) -> list:

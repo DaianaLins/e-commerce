@@ -23,5 +23,4 @@ def get_user(token: str= Depends(oauth2_schema)):
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Token invalido, usuário não localizado')
     
-    print(user)
     return user

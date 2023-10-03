@@ -4,7 +4,18 @@
   </div>
   <div [ngClass]="home">
     <app-header></app-header>
-    <div [ngClass]="content_search">
+    <div [ngClass]="layout_grid">
 
+      <div  *ngFor="let product of products">
+        <section  [ngStyle]="{'background': '{{product.status}}' }" [ngClass]="card">
+          <img src='http://127.0.0.1:8000/product/{{product.image}}' width="200" height="200" alt="" srcset="">
+          <h1 [ngClass]="title"> {{product.name}}</h1>
+         <p [ngClass]="quantity"> Quantidade em estoque: {{product.status}}</p>
+          <h1 [ngClass]="value">Valor: R$ {{product.value}}</h1>
+          <h1 [ngClass]="value">USD: $ {{product.convert}}</h1>
+          <p [ngClass]="desc">{{truncate(product.description, 85)}}</p>
+        </section>
+
+      </div>
+    </div>
   </div>
-</div>

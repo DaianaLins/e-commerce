@@ -20,28 +20,26 @@ export class SignupComponent {
   showErrAut:boolean = false;
   form = "form";
 
-  message: string;
+  message: string = '';
 
   constructor(public authService: AuthService, public router: Router) {
-    this.message = this.getMessage();
   }
 
-  getMessage() {
-    return 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-  }
 
   signup() {
-    this.message = 'Trying to log in ...';
+    if (this.nome != '' && this.email_l != '' && this.password != '') {
     var usuario = {'name': this.nome, 'email': this.email_l, 'password': this.password} as IUsuario;
     this.authService.signup(usuario).subscribe((res) => {
-      this.message = this.getMessage();
       alert(res.msg)
-      const redirectUrl = 'home';
+      const redirectUrl = 'login';
       this.router.navigate([redirectUrl]);
     },
     err =>{
       alert(err.error.detail)
     });
+  }else{
+    this.message = 'Preencha todos os campos *'
   }
+}
 
 }

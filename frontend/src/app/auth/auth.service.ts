@@ -54,9 +54,6 @@ export class AuthService {
   signup(usuario: IUsuario): Observable<IUserReturn> {
     const res = this.httpClient.post<IUserReturn>(this.apiUrl + "/create", usuario).pipe(
       tap((resposta) => {
-        if(!resposta){
-          console.log(resposta)
-        }
 
       }))
 

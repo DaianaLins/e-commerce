@@ -1,8 +1,7 @@
 .body{
   /* display:flex; */
   float: left;
-  background: white;
-
+  /* background: white; */
   }
   .home{
     background: #1a1a1a;
@@ -28,7 +27,45 @@
   /* border: 3px solid orange;   */
   }
 
-  button{
+
+  .input{
+    margin-right: 2rem;
+    height: 48px;
+    width: 20rem;
+    background-color: #242424;
+    border-radius: 30px;
+    border: 0;
+    padding: 6px 48px;
+    margin: 10px 0 20px 0;
+    color: #fff!important;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.input_header{
+    display: flex;
+    align-items: center;
+    /* position: fixed; */
+    flex-direction: column;
+    /* right: 12rem; */
+
+}
+
+
+  .content_search{
+    /* padding: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background: white; */
+    height: 85vh;
+  }
+
+
+
+  .button{
     background: #8B0000;
     height: 45px;
     width: 350px;
@@ -43,3 +80,62 @@
     justify-content: center;
     align-self: center;
   }
+
+  .container_cat{
+    height: 85vh;
+  }
+.container{
+  /* padding: 20px; */
+  display: grid;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  grid-template-columns: repeat(6, 3fr);
+  /* background: white;   */
+  height: auto;
+  padding-top: 5rem;
+  /* padding-left: 1rem; */
+}
+
+p{
+  padding: 20px;
+  width: 100px;
+  border-radius: 10px;
+  background: gray;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.content_button{
+  margin: 0;
+  padding: 0;
+  height: auto;
+  padding-left: 2rem;
+}
+
+button{
+  background: #8B0000;
+  height: 45px;
+  width: 65px;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Roboto';
+  font-size: 14px;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.content_card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.msg{
+  color: red;
+  padding: 0;
+  width: 100%;
+  background: none;
+}

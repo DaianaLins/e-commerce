@@ -4,10 +4,42 @@
   </div>
   <div [ngClass]="home">
     <app-header></app-header>
-    <div [ngClass]="content_search">
-      <button (click)="createCategory()">Cadatrar Categoria</button>
-      <p  *ngFor="let category of categories" >
-        {{category.name}}
-      </p>
-  </div>
+    <div  [ngClass]="content_button" >
+      <button [ngClass]="button" (click)="changeShowCategories()">{{showCategories ? 'Cadatrar Categoria' : 'Mostrar categorias'}}</button>
+    </div>
+    <div [ngClass]="content_search" *ngIf="!showCategories ; else showCat">
+      <div [ngClass]="input_header" >
+        <p [ngClass]="msg" *ngIf="!!message">{{message}}</p>
+        <input
+        [ngClass]="input"
+          placeholder="Nome"
+          [(ngModel)]="name"
+          name="name"
+          type="text"
+        />
+        <input
+        [ngClass]="input"
+          placeholder="Descrição"
+          [(ngModel)]="description"
+          name="description"
+          type="text"
+        />
+        <button [ngClass]="button" (click)="createCategory()">Cadastrar Categoria</button>
+      </div>
+
+    </div>
+    <ng-template #showCat>
+      <section [ngClass]="container_cat">
+        <div [ngClass]="container" >
+          <div [ngClass]="content_card"  *ngFor="let category of categories" >
+           <p (click)="handleClick(category)">{{category.name}}</p>
+           <div *ngIf="category.id === categoryId && showButtons">
+             <button (click)="handleEdit(category)" [ngStyle]="{'background': 'rgb(254, 176, 84)'}">Editar</button>
+             <button (click)="handleDelete(category.id)" >Excluir</button>
+           </div>
+          </div>
+        </div>
+
+      </section>
+    </ng-template>
 </div>
